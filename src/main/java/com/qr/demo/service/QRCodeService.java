@@ -36,10 +36,27 @@ public class QRCodeService {
 
 		return dirQr;
 	}
-	public void setDirQr(String dirQr) {
-		this.dirQr = dirQr;
-	}
+	
     
+
+    public void setDirQr(String dirQr) {
+		this.dirQr = dirQr;
+    }
+    
+    private String baseurl;
+    /**
+     * @return the baseurl
+     */
+    public String getBaseurl() {
+        return baseurl;
+    }
+
+    /**
+     * @param baseurl the baseurl to set
+     */
+    public void setBaseurl(String baseurl) {
+        this.baseurl = baseurl;
+    }
     
 
 	private Path generateQRCodeImage(String text, int width, int height, String filename)
@@ -55,6 +72,9 @@ public class QRCodeService {
     }
 
     public String generator(String msg) {
+
+        msg=baseurl+msg;
+        
         try {
         	String filename = new Date().getTime()+"";
             generateQRCodeImage(msg, 350, 350, filename);
